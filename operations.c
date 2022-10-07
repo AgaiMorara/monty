@@ -32,3 +32,14 @@ void pall()
 		top = top->next;
 	}
 }
+void pint()
+{
+	int linecount = 0;
+
+	if (!top)
+	{
+		fprintf(stderr, "L%d: Can't pint, stack empty", linecount);
+		exit (EXIT_FAILURE);
+	}
+	printf("%d\n", top->value);
+}

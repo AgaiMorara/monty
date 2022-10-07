@@ -69,10 +69,13 @@ void breakdown(char *ptr)
 		portion = strtok(NULL, delim);
 	}
 
-	if (strcmp(arr[0], "push") == 0)
+	if (_strcmp(arr[0], "push") == 0)
 	{
 		push(atoi(arr[1]));
 	}
-        else
+        else if (_strcmp(arr[0], "pall") == 0)
 		pall();
+	else if (_strcmp(arr[0], "pint") == 0)
+		pint();
+
 }

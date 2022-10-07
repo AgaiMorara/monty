@@ -15,6 +15,8 @@ void breakdown(char *ptr);
 void push (int a);
 int pop ();
 void pall();
+void pint();
+
 /**
  * struct node - container of objects in linked ;ost
  *@ int value: data structure for integers to be pushed or pulled
@@ -28,6 +30,8 @@ struct node{
 	nodePtr next;
 	nodePtr previous;
 } *top;
+
+extern int linecount;
 
 typedef struct node node;
 
