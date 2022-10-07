@@ -24,22 +24,39 @@ void push(int a)
 
 void pall()
 {
+	nodePtr temp;
+	temp = top;
 	if (!top)
 		return;
-	while (top)
+	while (temp)
 	{
-		printf("%d\n", top->value );
-		top = top->next;
+		printf("%d\n", temp->value );
+		temp = temp->next;
 	}
 }
 void pint()
 {
-	int linecount = 0;
 
 	if (!top)
 	{
-		fprintf(stderr, "L%d: Can't pint, stack empty", linecount);
+		fprintf(stderr, "L: Can't pint, stack empty\n");
 		exit (EXIT_FAILURE);
 	}
 	printf("%d\n", top->value);
+}
+int pop()
+{
+	int value;
+	nodePtr temp;
+
+	if (!top)
+	{
+		fprintf(stderr," can't pop an empty stack\n");
+		exit (EXIT_FAILURE);
+	}
+	value = top->value;
+	temp = top;
+	top = top->next;
+	free(temp);
+	return (value);
 }

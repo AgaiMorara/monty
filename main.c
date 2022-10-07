@@ -13,7 +13,6 @@ int main(int argc, char **argv __attribute__((unused)))
 	size_t buff = 0;
 	char *line = NULL, *testr = NULL;
 	FILE *fp;
-	int linecount = 0;
 
 	if (argc < 2)
 	{
@@ -29,7 +28,6 @@ int main(int argc, char **argv __attribute__((unused)))
 	}
 	while ((nget = getline(&line, &buff, fp)) > 0)
 		{
-			linecount ++;
 			testr = malloc(sizeof(char) * nget + 1);
 			_strcpy(testr, line);
 			breakdown(testr);

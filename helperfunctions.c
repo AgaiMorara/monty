@@ -77,5 +77,7 @@ void breakdown(char *ptr)
 		pall();
 	else if (_strcmp(arr[0], "pint") == 0)
 		pint();
+	else if (_strcmp(arr[0], "pop") == 0)
+		pop();
 
 }
