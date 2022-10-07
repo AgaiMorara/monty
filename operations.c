@@ -60,3 +60,17 @@ int pop()
 	free(temp);
 	return (value);
 }
+void swap()
+{
+	nodePtr first, second;
+	if (!(top->next))
+	{
+		fprintf(stderr, "can't swap, stack too short\n");
+		exit (EXIT_FAILURE);
+	}
+	first = top->next;
+	second = top;
+	second->next = first->next;
+	top = first;
+	top->next = second;
+}

@@ -16,6 +16,7 @@ void push (int a);
 int pop ();
 void pall();
 void pint();
+void swap();
 
 /**
  * struct node - container of objects in linked ;ost

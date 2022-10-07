@@ -79,5 +79,7 @@ void breakdown(char *ptr)
 		pint();
 	else if (_strcmp(arr[0], "pop") == 0)
 		pop();
+	else if (_strcmp(arr[0], "swap") == 0)
+		swap();
 
 }
