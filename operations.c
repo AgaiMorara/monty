@@ -39,7 +39,7 @@ void pint()
 
 	if (!top)
 	{
-		fprintf(stderr, "L: Can't pint, stack empty\n");
+		fprintf(stderr, "L<%u>: Can't pint, stack empty\n", line_number);
 		exit (EXIT_FAILURE);
 	}
 	printf("%d\n", top->value);

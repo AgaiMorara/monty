@@ -1,6 +1,7 @@
 #ifndef FILE_H
 #define FILE_H
 #define  _POSIX_C_SOURCE 200809L
+extern unsigned int line_number;
 
 #include <stdio.h>
 #include <unistd.h>

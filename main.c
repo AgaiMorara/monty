@@ -7,6 +7,8 @@
  * @argv: argument vector
  *Return: 0 when successful, -1 otherwise
  */
+unsigned int line_number = 0;
+
 int main(int argc, char **argv __attribute__((unused)))
 {
 	int nget;
@@ -30,6 +32,7 @@ int main(int argc, char **argv __attribute__((unused)))
 		{
 			testr = malloc(sizeof(char) * nget + 1);
 			_strcpy(testr, line);
+			line_number++;
 			breakdown(testr);
 			free(testr);
 		}
