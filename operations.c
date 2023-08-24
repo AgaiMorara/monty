@@ -1,76 +1,82 @@
 #include "monty.h"
 
-void push(int a)
+void push(stack_t **top, unsigned int line_number)
 {
-	nodePtr temp = malloc(sizeof(node));
+	stack_t *temp = malloc(sizeof(stack_t));
 	if (!temp)
 	{
 		fprintf(stderr, "malloc failed");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
-	temp->value = a;
-	if (!top)
+
+	if (value >= 0)
+		temp->n = value;
+	else
+	{
+		fprintf(stderr, "L %d : Usage : push integer", line_number);
+		EXIT_FAILURE;
+	}
+	if (!(*top))
 	{
 		temp->next = NULL;
-		temp->previous = NULL;
-		top = temp;
+		temp->prev = NULL;
+		*top = temp;
 	}
 	else
 	{
-		temp->next = top;
-		top =  temp;
+		temp->next = *top;
+		*top =  temp;
 	}
 }
 
-void pall()
+void pall(stack_t **top, unsigned int line_number)
 {
-	nodePtr temp;
-	temp = top;
-	if (!top)
+	stack_t *temp;
+	temp = *top;
+	if (!temp)
 		return;
+	if (dum == 1)
+		fprintf(stderr, "L <%d>: unknown instruction %s pall", line_number, ins); 
 	while (temp)
 	{
-		printf("%d\n", temp->value );
+		printf("%d\n", temp->n );
 		temp = temp->next;
 	}
 }
-void pint()
+void pint(stack_t **top, unsigned int line_number)
 {
 
-	if (!top)
+	if (!(*top))
 	{
-		fprintf(stderr, "L<%u>: Can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L<%u>: Can't pint, stack empty d\n", line_number);
 		exit (EXIT_FAILURE);
 	}
-	printf("%d\n", top->value);
+	printf("%d\n", (*top)->n);
 }
-int pop()
-{
-	int value;
-	nodePtr temp;
 
-	if (!top)
-	{
-		fprintf(stderr," can't pop an empty stack\n");
-		exit (EXIT_FAILURE);
-	}
-	value = top->value;
-	temp = top;
-	top = top->next;
-	free(temp);
-	return (value);
-}
-void swap()
+void pop(stack_t **top, unsigned int line_number)
 {
-	nodePtr first, second;
-	if (!(top->next))
+
+	if (!(*top))
 	{
-		fprintf(stderr, "can't swap, stack too short\n");
+		fprintf(stderr," can't pop an empty stack %d\n", line_number);
 		exit (EXIT_FAILURE);
 	}
-	first = top->next;
-	second = top;
+	value = (*top)->n;
+	*top = (*top)->next;
+	printf ("%d", value);
+}
+void swap(stack_t **top, unsigned int line_number)
+{
+	stack_t *first, *second;
+	if (!((*top)->next))
+	{
+		fprintf(stderr, "can't swap, stack too short %d \n", line_number);
+		exit (EXIT_FAILURE);
+	}
+	first = (*top)->next;
+	second = *top;
 	second->next = first->next;
-	top = first;
-	top->next = second;
+	*top = first;
+	(*top)->next = second;
 }

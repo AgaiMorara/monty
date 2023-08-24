@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 
 /**
  * main - entry point to compiling our shell
@@ -7,7 +6,6 @@
  * @argv: argument vector
  *Return: 0 when successful, -1 otherwise
  */
-unsigned int line_number = 0;
 
 int main(int argc, char **argv __attribute__((unused)))
 {
@@ -15,10 +13,11 @@ int main(int argc, char **argv __attribute__((unused)))
 	size_t buff = 0;
 	char *line = NULL, *testr = NULL;
 	FILE *fp;
+	line_number = 0;
 
 	if (argc < 2)
 	{
-		fprintf(stderr, "monty file");
+		fprintf(stderr, "monty file\n");
 		exit (EXIT_FAILURE);
 	}
 
@@ -36,6 +35,6 @@ int main(int argc, char **argv __attribute__((unused)))
 			breakdown(testr);
 			free(testr);
 		}
-		free(line);
-		return (0);
+	free (line);
+	return (0);
 }
