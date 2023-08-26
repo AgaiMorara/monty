@@ -77,7 +77,7 @@ void breakdown(char *ptr)
 			value = atoi(arr[1]);
 		else
 		{
-			fprintf(stderr,"L%d: USAGE: push integer\n"
+			fprintf(stderr,"L%d: usage: push integer\n"
 				, line_number);
 			exit(EXIT_FAILURE);
 		}
