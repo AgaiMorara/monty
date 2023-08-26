@@ -86,6 +86,9 @@ void breakdown(char *ptr)
 		j++;
 	}
 	if (instructions[j].opcode == NULL)
-		fprintf(stderr, "L%d: unknown instruction %s",
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n",
 			line_number, arr[0]);
+		exit(0);
+	}
 }
