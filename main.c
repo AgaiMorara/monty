@@ -24,13 +24,13 @@ int main(int argc, char **argv __attribute__((unused)))
 {
 	int nget;
 	size_t buff = 0;
-	char *line = NULL, *testr = NULL;
+	char *line = NULL, *testr = NULL, *trimmed;
 	FILE *fp;
 	line_number = 0;
 
 	if (argc < 2)
 	{
-		fprintf(stderr, "Usage:monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit (EXIT_FAILURE);
 	}
 
@@ -43,7 +43,12 @@ int main(int argc, char **argv __attribute__((unused)))
 	while ((nget = getline(&line, &buff, fp)) > 0)
 		{
 			testr = malloc(sizeof(char) * nget + 1);
-			_strcpy(testr, line);
+			trimmed = line;
+			while (*trimmed == ' ' || *trimmed == '\t')
+				trimmed++;
+			if (*trimmed == '\n' || *trimmed == '\0')
+				continue;
+			_strcpy(testr, trimmed);
 			line_number++;
 			breakdown(testr);
 			free(testr);
