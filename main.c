@@ -1,5 +1,18 @@
 #include "monty.h"
-
+/**
+ *free_dlistint - frees a doubly linked list
+ *@head: entry point to list
+ */
+void free_dlistint(stack_t *head);
+void free_dlistint(stack_t *head)
+{
+	if (head)
+	{
+		if (head->next != NULL)
+			free_dlistint(head->next);
+		free(head);
+	}
+}
 /**
  * main - entry point to compiling our shell
  * @argc:  argument count
@@ -35,6 +48,7 @@ int main(int argc, char **argv __attribute__((unused)))
 			breakdown(testr);
 			free(testr);
 		}
+	free (top);
 	free (line);
 	return (0);
 }

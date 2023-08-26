@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void push(stack_t **top, unsigned int line_number)
+void push(stack_t **top, unsigned int __attribute__((unused))  line_number)
 {
 	stack_t *temp = malloc(sizeof(stack_t));
 	if (!temp)
@@ -8,42 +8,29 @@ void push(stack_t **top, unsigned int line_number)
 		fprintf(stderr, "malloc failed");
 		exit(EXIT_FAILURE);
 	}
-
-	if (value >= 0)
-		temp->n = value;
-	else
-	{
-		fprintf(stderr, "L %d : Usage : push integer", line_number);
-		EXIT_FAILURE;
-	}
-	if (!(*top))
-	{
-		temp->next = NULL;
-		temp->prev = NULL;
-		*top = temp;
-	}
-	else
-	{
-		temp->next = *top;
-		*top =  temp;
-	}
+	temp->n = value;
+	temp->next = *top;
+	temp->prev = NULL;
+	if (*top != NULL)
+		(**top).prev = temp;
+	*top = temp;
 }
 
-void pall(stack_t **top, unsigned int line_number)
+void pall(stack_t **top, unsigned int __attribute__((unused)) line_number)
 {
 	stack_t *temp;
 	temp = *top;
 	if (!temp)
 		return;
 	if (dum == 1)
-		fprintf(stderr, "L <%d>: unknown instruction %s pall", line_number, ins); 
+		fprintf(stderr, "L <d>: unknown instruction s pall");
 	while (temp)
 	{
 		printf("%d\n", temp->n );
 		temp = temp->next;
 	}
 }
-void pint(stack_t **top, unsigned int line_number)
+void pint(stack_t **top, unsigned int __attribute__ ((unused))  line_number)
 {
 
 	if (!(*top))
@@ -54,7 +41,7 @@ void pint(stack_t **top, unsigned int line_number)
 	printf("%d\n", (*top)->n);
 }
 
-void pop(stack_t **top, unsigned int line_number)
+void pop(stack_t **top, unsigned int __attribute__ ((unused))  line_number)
 {
 
 	if (!(*top))
@@ -66,7 +53,7 @@ void pop(stack_t **top, unsigned int line_number)
 	*top = (*top)->next;
 	printf ("%d", value);
 }
-void swap(stack_t **top, unsigned int line_number)
+void swap(stack_t **top, unsigned int __attribute__ ((unused))  line_number)
 {
 	stack_t *first, *second;
 	if (!((*top)->next))

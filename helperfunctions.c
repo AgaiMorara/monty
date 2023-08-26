@@ -72,10 +72,8 @@ void breakdown(char *ptr)
 	}
 
 	if (arr[1])
-	{
 		if (_strcmp(arr[1], "0") == 0 || atoi(arr[1]) > 0)
 			value = atoi(arr[1]);
-	}
 
 
 	for (j = 0; j < 5; j++)
