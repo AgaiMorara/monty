@@ -48,7 +48,7 @@ int main(int argc, char **argv __attribute__((unused)))
 			breakdown(testr);
 			free(testr);
 		}
-	free_dlistint( top);
+	free_dlist_int( *top);
 	free (line);
 	return (0);
 }
