@@ -71,9 +71,17 @@ void breakdown(char *ptr)
 		portion = strtok(NULL, delim);
 	}
 
-	if (i >= 2)
+	if (i == 2)
+	{
 		if (_strcmp(arr[1], "0") == 0 || atoi(arr[1]) > 0)
 			value = atoi(arr[1]);
+		else
+		{
+			fprintf(stderr,"L%d: USAGE: push integer\n"
+				, line_number);
+			exit(EXIT_FAILURE);
+		}
+	}
 
 
 	while (instructions[j].opcode != NULL)
@@ -89,6 +97,6 @@ void breakdown(char *ptr)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n",
 			line_number, arr[0]);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 }
