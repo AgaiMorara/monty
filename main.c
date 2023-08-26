@@ -30,14 +30,14 @@ int main(int argc, char **argv __attribute__((unused)))
 
 	if (argc < 2)
 	{
-		fprintf(stderr, "monty file\n");
+		fprintf(stderr, "Usage:monty file\n");
 		exit (EXIT_FAILURE);
 	}
 
 	fp = fopen(argv[1], "r");
 	if (!fp)
 	{
-		fprintf(stderr, "Error: can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return EXIT_FAILURE;
 	}
 	while ((nget = getline(&line, &buff, fp)) > 0)
@@ -48,7 +48,8 @@ int main(int argc, char **argv __attribute__((unused)))
 			breakdown(testr);
 			free(testr);
 		}
-	free_dlistint( top);
+	free_dlistint(top);
 	free (line);
+	fclose(fp);
 	return (0);
 }

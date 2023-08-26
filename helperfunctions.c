@@ -71,15 +71,21 @@ void breakdown(char *ptr)
 		portion = strtok(NULL, delim);
 	}
 
-	if (arr[1])
+	if (i >= 2)
 		if (_strcmp(arr[1], "0") == 0 || atoi(arr[1]) > 0)
 			value = atoi(arr[1]);
 
 
-	for (j = 0; j < 5; j++)
+	while (instructions[j].opcode != NULL)
+	{
 		if (_strcmp(arr[0], instructions[j].opcode) == 0)
 		{
 			instructions[j].f(&top, line_number);
 			return;
 		}
+		j++;
+	}
+	if (instructions[j].opcode == NULL)
+		fprintf(stderr, "L<%d>: unknown instruction <%s>",
+			line_number, arr[0]);
 }
