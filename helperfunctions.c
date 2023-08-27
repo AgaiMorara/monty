@@ -84,6 +84,12 @@ void breakdown(char *ptr)
 				for (h = 1; h < i; h++)
 				{
 					value = atoi(arr[h]);
+					if (value == 0 &&
+					    _strcmp(arr[h],"0") != 0)
+					{
+						fprintf(stderr,"L%d: usage: push integer\n",line_number);
+						exit(EXIT_FAILURE);
+					}
 					instructions[j].f(&top, line_number);
 				}
 			   }
