@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int value;
+int value = 0;
 int dum = 0;
 char ins[100];
 unsigned int line_number = 0;

@@ -37,6 +37,7 @@ typedef struct instruction_s
 
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
+void operate(void);
 void breakdown(char *ptr);
 
 

@@ -55,7 +55,7 @@ void breakdown(char *ptr)
 {
 	char delim[] = " '$'\n", *arr[1024];
 	char *portion = strtok(ptr, delim);
-	int i = 0, j = 0;
+	int i = 0, j = 0, h;
 	instruction_t instructions[] = {{"push", push}, {"pop",pop},
 					{"pall", pall}, {"swap", swap},
 					{"pint", pint}, {NULL, NULL}};
@@ -71,24 +71,22 @@ void breakdown(char *ptr)
 		portion = strtok(NULL, delim);
 	}
 
-	if (i == 2)
-	{
-		if (_strcmp(arr[1], "0") == 0 || atoi(arr[1]) > 0)
-			value = atoi(arr[1]);
-		else
-		{
-			fprintf(stderr,"L%d: usage: push integer\n"
-				, line_number);
-			exit(EXIT_FAILURE);
-		}
-	}
-
-
 	while (instructions[j].opcode != NULL)
 	{
 		if (_strcmp(arr[0], instructions[j].opcode) == 0)
 		{
-			instructions[j].f(&top, line_number);
+			if(i == 1 && (_strcmp(instructions[j].opcode,
+					      "push") != 0))
+				instructions[j].f(&top, line_number);
+			   if (i > 1 && _strcmp(instructions[j].opcode,
+						"push") == 0)
+			   {
+				for (h = 1; h < i; h++)
+				{
+					value = atoi(arr[h]);
+					instructions[j].f(&top, line_number);
+				}
+			   }
 			return;
 		}
 		j++;
